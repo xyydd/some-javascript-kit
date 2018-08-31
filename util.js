@@ -105,13 +105,17 @@ util.routerMatch = (path, r) => {
   return res
 }
 
-util.clearOne = (arr, name) => {
+util.clearOne = (arr, argumentObj) => {
   let clone = JSON.parse(JSON.stringify(arr))
-  arr.forEach((items, index) => {
-    if (items.name === name) {
-      clone.splice(index, 1)
+  for (let argu in argumentObj) {
+    if (argumentObj[argu].length > 0) {
+      arr.forEach((items, index) => {
+        if (items[argu] === argumentObj[argu]) {
+          clone.splice(index, 1)
+        }
+      })
     }
-  })
+  }
   return clone
 }
 util.jsonHandle = (data) => {
