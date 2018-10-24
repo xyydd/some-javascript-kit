@@ -2,6 +2,8 @@ import {appRoutes,
   otherRouter,
   loginRouter} from '@/router/router'
 import Cookie from 'js-cookie'
+import {image} from '../../static/echartConfig/config.js'
+import {isType} from './isType.js'
 let util = {}
 
 util.breadPath = (pathName) => {
@@ -105,17 +107,13 @@ util.routerMatch = (path, r) => {
   return res
 }
 
-util.clearOne = (arr, argumentObj) => {
+util.clearOne = (arr, name) => {
   let clone = JSON.parse(JSON.stringify(arr))
-  for (let argu in argumentObj) {
-    if (argumentObj[argu].length > 0) {
-      arr.forEach((items, index) => {
-        if (items[argu] === argumentObj[argu]) {
-          clone.splice(index, 1)
-        }
-      })
+  arr.forEach((items, index) => {
+    if (items.name === name) {
+      clone.splice(index, 1)
     }
-  }
+  })
   return clone
 }
 util.jsonHandle = (data) => {
@@ -140,12 +138,68 @@ util.search = (data, argumentObj) => { // 查询
   for (let argu in argumentObj) {
     if (argumentObj[argu].length > 0) {
       res = dataClone.filter(d => {
-        return d[argu].indexOf(argumentObj[argu]) > -1
+        if (isType(d[argu], 'array')) {
+          for (let i = 0; i < d[argu].length; i++) {
+            return d[argu][i].indexOf(argumentObj[argu]) > -1
+          }
+        } else {
+          return d[argu].indexOf(argumentObj[argu]) > -1
+        }
       })
       dataClone = res
     }
   }
   return res
 }
-
+// util.initScreenConfig = (obj) => {
+//   obj.prototype.length = 0
+//   return obj
+// }
+util.handleEchartComponents = (data, screenWidth, screenHeight) => {
+  let configClone = util.jsonHandle(data)
+  if (data.width === 0 && data.height === 0) {
+    if (data.name === 'text') {
+      configClone.width = screenWidth * 0.15
+      configClone.height = 32
+      configClone.fontSize = 15
+      configClone.color = '#00ffff'
+      configClone.shadow = '0 0 10px #00ffff'
+    } else if (data.name === 'image') {
+      configClone.width = screenWidth * 0.3
+      configClone.height = screenHeight * 0.3
+      configClone.url = image[0].url
+    } else if (data.name === 'warningLight') {
+      configClone.params.index = 998
+      configClone.width = screenHeight * 0.3
+      configClone.height = screenHeight * 0.3
+    } else if (data.name === 'date') {
+      configClone.width = screenWidth * 0.38
+      configClone.height = screenHeight * 0.25
+      configClone.color = '#00ffff'
+      configClone.shadow = '0 0 10px #00ffff'
+    } else if (data.name === 'label') {
+      configClone.width = screenWidth * 0.15
+      configClone.height = screenHeight * 0.2
+      configClone.color = '#00ffff'
+      configClone.shadow = '0 0 10px #00ffff'
+    } else {
+      configClone.width = screenWidth * 0.3
+      configClone.height = screenHeight * 0.3
+    }
+  }
+  return configClone
+}
+util.nat_splice = (obj, key) => {
+  let clone = util.jsonHandle(obj)
+  delete clone[key]
+  return clone
+}
+util.handleGraphName = (obj, gName, topName, separator) => {
+  let arr = Object.keys(obj)
+  let index = arr.length - 1
+  let arr2 = obj[arr[index]][gName].split(separator)
+  let lastIndex = Number(arr2[arr2.length - 1]) + 1
+  let name = topName + lastIndex
+  return name
+}
 export default util
