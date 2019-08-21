@@ -1,22 +1,26 @@
 # some-javascript-kit
 
-Export2Excel.js, base64ToBlob.js, Blob.js:<br/>
-  those files from online<br/>
-<br/>
-util.js:<br/>
-  this file function: {<br/>
-    trim() -- remove spaces before and after sentences<br/>
-    search() -- search some object from array<br/>
-    clearOne() -- delete a object from array<br/>
-    jsonHandle() -- handle JSON.parse(JSON.stringify()) to copy a variate<br/>
-    others -- handle bread arr<br/>
-  }<br/>
+base64ToBlob.js:<br/>
+  those files from online，it change the base64 to blob.
 
-storage.js:<br/>
-  this file function: can save , delete ,fetch the data on web storage<br/>
 
-precent.js:<br/>
-  this file function: to calculate the precentage you incoming parameters<br/>
+### util.js:
+```javascript
+trim()// remove spaces before and after sentences
+search()// search some object from array
+nat_splice()// delete a key from object
+unitConversion()// Conversion unit
+copy()// handle JSON.parse(JSON.stringify()) to copy a variate
+others// handle bread arr
+download()// to download file use form
+getRandomStr()// get random character, you can set the character length
+```
 
-isType.js:<br/>
-  this file function: now only can decideif it's an array<br/>
+### storage.js
+Save, clear, fetch the data on web storage.
+
+### js-session.js
+Save, clear, fetch the data on web session.
+
+### isType.js
+Determine whether it is Array、String、Object、Number.
