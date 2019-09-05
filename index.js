@@ -2,6 +2,7 @@ import isType from './isType.js'
 import deecopy from './deecopy.js'
 import Session from './js-session.js'
 import storage from './storage.js'
+import dataURLtoBlob from './base64ToBlob.js'
 
 export const copy = (data) => {
   return JSON.parse(JSON.stringify(data))
@@ -110,3 +111,5 @@ export const deecopy = deecopy
 export const Session = Session
 
 export const storage = storage
+
+export const dataURLtoBlob = dataURLtoBlob

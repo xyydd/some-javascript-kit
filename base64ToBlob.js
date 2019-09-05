@@ -1,4 +1,4 @@
-export function dataURLtoBlob (dataurl) {
+function dataURLtoBlob (dataurl) {
   let arr = dataurl.split(',')
   let mime = arr[0].match(/:(.*?);/)[1]
   let bstr = atob(arr[1])
@@ -9,3 +9,5 @@ export function dataURLtoBlob (dataurl) {
   }
   return new Blob([u8arr], {type: mime})
 }
+
+export default dataURLtoBlob
