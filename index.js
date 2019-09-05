@@ -1,11 +1,12 @@
-import {isType} from './isType.js'
+import isType from './isType.js'
+import deecopy from './deecopy.js'
+import Session from './js-session.js'
+import storage from './storage.js'
 
-let util = {}
-
-util.copy = (data) => {
+export const copy = (data) => {
   return JSON.parse(JSON.stringify(data))
 }
-util.getBase64Image = (img) => {
+export const getBase64Image = (img) => {
   let canvas = document.createElement('canvas')
   canvas.width = img.width
   canvas.height = img.height
@@ -15,10 +16,10 @@ util.getBase64Image = (img) => {
   let dataURL = canvas.toDataURL('image/' + ext)
   return dataURL
 }
-util.trim = (str) => {
+export const trim = (str) => {
   return str.replace(/(^\s*)|(\s*$)/g, '')
 }
-util.search = (data, argumentObj) => { // 查询
+export const search = (data, argumentObj) => { // 查询
   let res = data
   let dataClone = data
   for (let argu in argumentObj) {
@@ -38,12 +39,7 @@ util.search = (data, argumentObj) => { // 查询
   return res
 }
 
-util.nat_splice = (obj, key) => {
-  let clone = util.jsonHandle(obj)
-  delete clone[key]
-  return clone
-}
-util.unitConversion = function (value, unit) {
+export const unitConversion = function (value, unit) {
   let str = ''
   switch (unit.toLowerCase()) {
     case 'b':
@@ -107,4 +103,10 @@ export const getRandomStr = function (len = 32) {
   }
   return str
 }
-export default util
+export const isType = isType
+
+export const deecopy = deecopy
+
+export const Session = Session
+
+export const storage = storage

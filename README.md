@@ -11,7 +11,6 @@ search()// search some object from array
 nat_splice()// delete a key from object
 unitConversion()// Conversion unit
 copy()// handle JSON.parse(JSON.stringify()) to copy a variate
-others// handle bread arr
 download()// to download file use form
 getRandomStr()// get random character, you can set the character length
 ```

@@ -1,4 +1,4 @@
-export const isType = function (data, type) {
+const isType = function (data, type) {
   return new Promise((resolve, reject) => {
     if (arguments.length === 2) {
       // 数组，这里使用isArray，有的浏览器不支持Array.isArray，则用prototype.toString替代
@@ -28,3 +28,5 @@ export const isType = function (data, type) {
     }
   })
 }
+
+export default isType
