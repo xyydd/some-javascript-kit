@@ -29,3 +29,6 @@ Save, clear, fetch the data on web session.
 
 ### isType.js
 Determine whether it is Array、String、Object、Number.
+
+### mt.js
+避免嵌入网站被代码
