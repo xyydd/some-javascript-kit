@@ -1,13 +1,13 @@
-import isType from './isType.js'
-import deecopy from './deecopy.js'
-import Session from './js-session.js'
-import storage from './storage.js'
-import dataURLtoBlob from './base64ToBlob.js'
+const isType = require('./isType.js')
+const deepcopy = require('./deepcopy.js')
+const Session = require('./js-session.js')
+const storage = require('./storage.js')
+const dataURLtoBlob = require('./base64ToBlob.js')
 
-export const copy = (data) => {
+const copy = (data) => {
   return JSON.parse(JSON.stringify(data))
 }
-export const getBase64Image = (img) => {
+const getBase64Image = (img) => {
   let canvas = document.createElement('canvas')
   canvas.width = img.width
   canvas.height = img.height
@@ -17,10 +17,10 @@ export const getBase64Image = (img) => {
   let dataURL = canvas.toDataURL('image/' + ext)
   return dataURL
 }
-export const trim = (str) => {
+const trim = (str) => {
   return str.replace(/(^\s*)|(\s*$)/g, '')
 }
-export const search = (data, argumentObj) => { // 查询
+const search = (data, argumentObj) => { // 查询
   let res = data
   let dataClone = data
   for (let argu in argumentObj) {
@@ -40,7 +40,7 @@ export const search = (data, argumentObj) => { // 查询
   return res
 }
 
-export const unitConversion = function (value, unit) {
+const unitConversion = function (value, unit) {
   let str = ''
   switch (unit.toLowerCase()) {
     case 'b':
@@ -85,7 +85,7 @@ export const unitConversion = function (value, unit) {
   }
   return str
 }
-export const download = function (accept, url) {
+const download = function (accept, url) {
   let $form = document.createElement('form')
   $form.setAttribute('method', 'GET')
   $form.setAttribute('id', 'temporary')
@@ -95,7 +95,7 @@ export const download = function (accept, url) {
   $form.submit()
   document.body.removeChild(document.getElementById('temporary'))
 }
-export const getRandomStr = function (len = 32) {
+const getRandomStr = function (len = 32) {
   const $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
   const maxPos = $chars.length
   let str = ''
@@ -104,12 +104,16 @@ export const getRandomStr = function (len = 32) {
   }
   return str
 }
-export const isType = isType
 
-export const deecopy = deecopy
-
-export const Session = Session
-
-export const storage = storage
-
-export const dataURLtoBlob = dataURLtoBlob
+module.exports = {
+  copy,
+  getBase64Image,
+  unitConversion,
+  download,
+  getRandomStr,
+  isType,
+  deepcopy,
+  Session,
+  storage,
+  dataURLtoBlob
+}

@@ -29,4 +29,4 @@ const isType = function (data, type) {
   })
 }
 
-export default isType
+module.exports = isType

@@ -1,6 +1,6 @@
 const VM_STORAGE = 'DD_'
 
-export default {
+const session =  {
   save: function (name, item) {
     window.sessionStorage.setItem(VM_STORAGE + name, JSON.stringify(item))
   },
@@ -15,3 +15,5 @@ export default {
     window.sessionStorage.removeItem(VM_STORAGE + name)
   }
 }
+
+module.exports = session

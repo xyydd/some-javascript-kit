@@ -142,4 +142,4 @@ function clone(target, map = new WeakMap()) {
 
     return cloneTarget;
 }
-export default clone
+module.exports = clone
