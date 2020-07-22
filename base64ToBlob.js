@@ -10,4 +10,4 @@ function dataURLtoBlob (dataurl) {
   return new Blob([u8arr], {type: mime})
 }
 
-export default dataURLtoBlob
+module.exports = dataURLtoBlob

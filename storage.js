@@ -1,6 +1,6 @@
 const VM_STORAGE = 'DD_'
 
-export default {
+const storage =  {
   save: function (name, item) {
     window.localStorage.setItem(VM_STORAGE + name, JSON.stringify(item))
   },
@@ -11,3 +11,5 @@ export default {
     window.localStorage.removeItem(VM_STORAGE + name)
   }
 }
+
+module.exports = storage
