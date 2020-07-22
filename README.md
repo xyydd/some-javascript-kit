@@ -13,22 +13,19 @@ Session // 增删改查浏览器 本地缓存session --> js-session.js
 storage // 增删改查浏览器 本地缓存storage --> storage.js
 dataURLtoBlob // base64转Blob --> base64ToBlob.js
 getBase64Image // 图像转base64
-trim()// remove spaces before and after sentences
-search()// search some object from array
-unitConversion()// Conversion unit
-copy()// handle JSON.parse(JSON.stringify()) to copy a variate
-download()// to download file use form
-getRandomStr()// get random character, you can set the character length
+trim// remove spaces before and after sentences
+search// search some object from array
+unitConversion// Conversion unit
+download// to download file use form
+getRandomStr// get random character, you can set the character length
 ```
+### CanvasDraw.js
 
-### storage.js
-Save, clear, fetch the data on web storage.
-
-### js-session.js
-Save, clear, fetch the data on web session.
-
-### isType.js
-Determine whether it is Array、String、Object、Number.
+#### Instructions
+```javascript
+const CanvasDraw = require('./CanvasDraw.js')
+const canvasDraw = new CanvasDraw(ctx, )
+```
 
 ### mt.js
 Avoid websites being embedded in iframes

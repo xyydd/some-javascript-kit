@@ -121,3 +121,5 @@ class CanvasDraw {
     }
   }
 }
+
+exports.module = CanvasDraw
