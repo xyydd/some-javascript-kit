@@ -31,4 +31,4 @@ Save, clear, fetch the data on web session.
 Determine whether it is Array、String、Object、Number.
 
 ### mt.js
-避免嵌入网站被代码
+Avoid websites being embedded in iframes

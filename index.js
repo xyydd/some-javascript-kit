@@ -1,12 +1,9 @@
 const isType = require('./isType.js')
 const deepcopy = require('./deepcopy.js')
-const Session = require('./js-session.js')
+const Session = require('./session.js')
 const storage = require('./storage.js')
 const dataURLtoBlob = require('./base64ToBlob.js')
 
-const copy = (data) => {
-  return JSON.parse(JSON.stringify(data))
-}
 const getBase64Image = (img) => {
   let canvas = document.createElement('canvas')
   canvas.width = img.width
@@ -106,7 +103,6 @@ const getRandomStr = function (len = 32) {
 }
 
 module.exports = {
-  copy,
   getBase64Image,
   unitConversion,
   download,
