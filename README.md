@@ -1,31 +1,107 @@
 # some-javascript-kit
+![GitHub](https://img.shields.io/github/license/xyydd/some-javascript-kit?color=green)
 
-base64ToBlob.js:<br/>
-  those files from online，it change the base64 to blob.
+## index.js:
 
+### Installation
 
-### index.js:
+```shell
+git clone https://github.com/xyydd/some-javascript-kit.git
+```
+
+#### Browser
+
+```html
+<script type="text/javascript" src="./some-javascript-kit/index.js"></script>
+```
+
+#### Module
+
 ```javascript
-// 能从index.js中获取所有当前项目下所有方法
-isType // 判断类型,用法 isType(data, 'array') --> isType.js
-deecopy // 深度拷贝 来自https://github.com/ConardLi/ConardLi.github.io/blob/master/demo/deepClone/src/clone_6.js --> deepcopy.js
-Session // 增删改查浏览器 本地缓存session --> js-session.js
-storage // 增删改查浏览器 本地缓存storage --> storage.js
-dataURLtoBlob // base64转Blob --> base64ToBlob.js
-getBase64Image // 图像转base64
+import { isType } from './some-javascript-kit/index.js'
+```
+
+### Introduction
+
+```javascript
+// There are several methods in index.js that can be accessed from outside
+isType // Judgment type,Instructions： isType(data, 'array')
+deecopy // from https://github.com/ConardLi/ConardLi.github.io/blob/master/demo/deepClone/src/clone_6.js --> deepcopy.js
+session // Browser local session
+storage // Browser local storage
+dataURLtoBlob // base64 to Blob
+getBase64Image // image to base64
 trim// remove spaces before and after sentences
 search// search some object from array
-unitConversion// Conversion unit
+unitConversion// Conversion unit.support b-yb and time.
 download// to download file use form
 getRandomStr// get random character, you can set the character length
 ```
-### CanvasDraw.js
+### Usage
 
-#### Instructions
+##### isType
+
+This method now supports judging array, string, object, number
+
 ```javascript
-const CanvasDraw = require('./CanvasDraw.js')
-const canvasDraw = new CanvasDraw(ctx, )
+const arr = []
+isType(arr, 'array') // true
+const obj = []
+isType(obj, 'array') // false
 ```
 
-### mt.js
+##### deecopy
+
+```javascript
+let copyData = deecopy(data)
+```
+
+##### session
+
+##### storage
+
+##### dataURLtoBlob
+
+##### getBase64Image
+
+##### trim
+
+##### search
+
+##### unitConversion
+
+##### download
+
+##### getRandomStr
+
+## CanvasDraw.js
+
+### Introduction
+
+```
+Make the portrait on the canvas always center
+```
+
+### Usage
+
+```javascript
+const CanvasDraw = require('./CanvasDraw.js')
+const canvasDraw = new CanvasDraw(ctx, canvasWidth, canvasHeight)
+const img = new Image()
+img.src = 'http://....'
+img.onload = function () {
+    canvasDraw.handleDraw(img, imgWidth, imgHeight)
+}
+```
+
+## mt.js
+
+### Introduction
+
 Avoid websites being embedded in iframes
+
+### Usage
+
+```
+Copy the code to the top level of your project
+```

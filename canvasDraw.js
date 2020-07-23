@@ -16,8 +16,8 @@ class CanvasDraw {
   /**
    * 画的函数
    * @param  {Image} image      new Image()对象
-   * @param  {[type]} imgWidth  图片宽度
-   * @param  {[type]} imgHeight 图片高度
+   * @param  {[type]} imgWidth  图片原始宽度
+   * @param  {[type]} imgHeight 图片原始高度
    * @return {void}
    */
   handleDraw (image, imgWidth, imgHeight) {
