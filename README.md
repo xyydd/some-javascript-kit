@@ -9,6 +9,12 @@
 git clone https://github.com/xyydd/some-javascript-kit.git
 ```
 
+or
+
+```shell
+npm i -S some-javascript-kit
+```
+
 #### Browser
 
 ```html

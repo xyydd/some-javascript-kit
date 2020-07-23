@@ -18,6 +18,5 @@
   "homepage": "https://github.com/xyydd/some-javascript-kit#readme",
   "devDependencies": {
     "jest": "^25.5.4"
-  },
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
+  }
 }
