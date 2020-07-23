@@ -58,21 +58,75 @@ let copyData = deecopy(data)
 
 ##### session
 
+```javascript
+session.save('dataName', data)
+session.fetch('dataName')
+session.clear('dataName')
+```
+
 ##### storage
+
+```javascript
+storage.save('dataName', data)
+storage.fetch('dataName')
+storage.clear('dataName')
+```
 
 ##### dataURLtoBlob
 
+```javascript
+const blob = dataURLtoBlob(base64)
+```
+
 ##### getBase64Image
+
+```javascript
+const img = new Image()
+let base64
+img.src = 'http://XXXXXX'
+img.onload = function () {
+  base64 = getBase64Image(img)
+}
+```
 
 ##### trim
 
+```javascript
+let str = '  demo  '
+str = trim(str) // 'demo'
+```
+
 ##### search
+
+```javascript
+let data = [{
+  name: 'nathan'
+}, {
+  name: 'eric'
+}]
+const res = search(data, {name: 'nathan'})
+```
 
 ##### unitConversion
 
+```javascript
+let value = 1024
+const unit = 'b'
+const conversion = unitConversion(value, unit)
+```
+
 ##### download
 
+```javascript
+const url = 'http://XXXXX'
+download('.json', url)
+```
+
 ##### getRandomStr
+
+```javascript
+const _id = getRandomStr(32)
+```
 
 ## CanvasDraw.js
 
