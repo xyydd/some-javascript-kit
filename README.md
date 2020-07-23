@@ -1,5 +1,5 @@
 # some-javascript-kit
-![GitHub](https://img.shields.io/github/license/xyydd/some-javascript-kit?color=green)![Travis (.org)](https://img.shields.io/travis/xyydd/some-javascript-kit)
+![GitHub](https://img.shields.io/github/license/xyydd/some-javascript-kit?color=green) ![Travis (.org)](https://img.shields.io/travis/xyydd/some-javascript-kit)
 
 ## index.js:
 
