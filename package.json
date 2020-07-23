@@ -4,7 +4,7 @@
   "description": "base64ToBlob.js:<br/>   those files from online，it change the base64 to blob.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "jest test/*"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/xyydd/some-javascript-kit/issues"
   },
-  "homepage": "https://github.com/xyydd/some-javascript-kit#readme"
+  "homepage": "https://github.com/xyydd/some-javascript-kit#readme",
+  "devDependencies": {
+    "jest": "^25.5.4"
+  }
 }
