@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+https://github.com/xyydd/some-javascript-kit.git"
   },
-  "author": "nathan",
+  "author": "nathan96",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/xyydd/some-javascript-kit/issues"
@@ -18,5 +18,6 @@
   "homepage": "https://github.com/xyydd/some-javascript-kit#readme",
   "devDependencies": {
     "jest": "^25.5.4"
-  }
+  },
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" }
 }
