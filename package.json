@@ -1,19 +1,22 @@
 {
   "name": "some-javascript-kit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "base64ToBlob.js:<br/>   those files from online，it change the base64 to blob.",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "jest test/*"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/xyydd/some-javascript-kit.git"
   },
-  "author": "nathan",
+  "author": "nathan96",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/xyydd/some-javascript-kit/issues"
   },
-  "homepage": "https://github.com/xyydd/some-javascript-kit#readme"
+  "homepage": "https://github.com/xyydd/some-javascript-kit#readme",
+  "devDependencies": {
+    "jest": "^25.5.4"
+  }
 }

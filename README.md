@@ -9,6 +9,12 @@
 git clone https://github.com/xyydd/some-javascript-kit.git
 ```
 
+or
+
+```shell
+npm i -S some-javascript-kit
+```
+
 #### Browser
 
 ```html
@@ -25,8 +31,8 @@ import { isType } from './some-javascript-kit/index.js'
 
 ```javascript
 // There are several methods in index.js that can be accessed from outside
-isType // Judgment type,Instructions： isType(data, 'array')
-deecopy // from https://github.com/ConardLi/ConardLi.github.io/blob/master/demo/deepClone/src/clone_6.js --> deepcopy.js
+isType // Judgment type
+deecopy // from https://github.com/ConardLi/ConardLi.github.io/blob/master/demo/deepClone/src/clone_6.js
 session // Browser local session
 storage // Browser local storage
 dataURLtoBlob // base64 to Blob
