@@ -1,34 +1,167 @@
 # some-javascript-kit
+![GitHub](https://img.shields.io/github/license/xyydd/some-javascript-kit?color=green) ![Travis (.org)](https://img.shields.io/travis/xyydd/some-javascript-kit)
 
-base64ToBlob.js:<br/>
-  those files from online，it change the base64 to blob.
+## index.js:
 
+### Installation
 
-### index.js:
-```javascript
-// 能从index.js中获取所有当前项目下所有方法
-isType // 判断类型,用法 isType(data, 'array') --> isType.js
-deecopy // 深度拷贝 来自https://github.com/ConardLi/ConardLi.github.io/blob/master/demo/deepClone/src/clone_6.js --> deepcopy.js
-Session // 增删改查浏览器 本地缓存session --> js-session.js
-storage // 增删改查浏览器 本地缓存storage --> storage.js
-dataURLtoBlob // base64转Blob --> base64ToBlob.js
-getBase64Image // 图像转base64
-trim()// remove spaces before and after sentences
-search()// search some object from array
-unitConversion()// Conversion unit
-copy()// handle JSON.parse(JSON.stringify()) to copy a variate
-download()// to download file use form
-getRandomStr()// get random character, you can set the character length
+```shell
+git clone https://github.com/xyydd/some-javascript-kit.git
 ```
 
-### storage.js
-Save, clear, fetch the data on web storage.
+or
 
-### js-session.js
-Save, clear, fetch the data on web session.
+```shell
+npm i -S some-javascript-kit
+```
 
-### isType.js
-Determine whether it is Array、String、Object、Number.
+#### Browser
 
-### mt.js
-避免嵌入网站被代码
+```html
+<script type="text/javascript" src="./some-javascript-kit/index.js"></script>
+```
+
+#### Module
+
+```javascript
+import { isType } from './some-javascript-kit/index.js'
+```
+
+### Introduction
+
+```javascript
+// There are several methods in index.js that can be accessed from outside
+isType // Judgment type
+deecopy // from https://github.com/ConardLi/ConardLi.github.io/blob/master/demo/deepClone/src/clone_6.js
+session // Browser local session
+storage // Browser local storage
+dataURLtoBlob // base64 to Blob
+getBase64Image // image to base64
+trim// remove spaces before and after sentences
+search// search some object from array
+unitConversion// Conversion unit.support b-yb and time.
+download// to download file use form
+getRandomStr// get random character, you can set the character length
+```
+### Usage
+
+##### isType
+
+This method now supports judging array, string, object, number
+
+```javascript
+const arr = []
+isType(arr, 'array') // true
+const obj = []
+isType(obj, 'array') // false
+```
+
+##### deecopy
+
+```javascript
+let copyData = deecopy(data)
+```
+
+##### session
+
+```javascript
+session.save('dataName', data)
+session.fetch('dataName')
+session.clear('dataName')
+```
+
+##### storage
+
+```javascript
+storage.save('dataName', data)
+storage.fetch('dataName')
+storage.clear('dataName')
+```
+
+##### dataURLtoBlob
+
+```javascript
+const blob = dataURLtoBlob(base64)
+```
+
+##### getBase64Image
+
+```javascript
+const img = new Image()
+let base64
+img.src = 'http://XXXXXX'
+img.onload = function () {
+  base64 = getBase64Image(img)
+}
+```
+
+##### trim
+
+```javascript
+let str = '  demo  '
+str = trim(str) // 'demo'
+```
+
+##### search
+
+```javascript
+let data = [{
+  name: 'nathan'
+}, {
+  name: 'eric'
+}]
+const res = search(data, {name: 'nathan'})
+```
+
+##### unitConversion
+
+```javascript
+let value = 1024
+const unit = 'b'
+const conversion = unitConversion(value, unit)
+```
+
+##### download
+
+```javascript
+const url = 'http://XXXXX'
+download('.json', url)
+```
+
+##### getRandomStr
+
+```javascript
+const _id = getRandomStr(32)
+```
+
+## CanvasDraw.js
+
+### Introduction
+
+```
+Make the portrait on the canvas always center
+```
+
+### Usage
+
+```javascript
+const CanvasDraw = require('./CanvasDraw.js')
+const canvasDraw = new CanvasDraw(ctx, canvasWidth, canvasHeight)
+const img = new Image()
+img.src = 'http://....'
+img.onload = function () {
+    canvasDraw.handleDraw(img, imgWidth, imgHeight)
+}
+```
+
+## mt.js
+
+### Introduction
+
+Avoid websites being embedded in iframes
+
+### Usage
+
+```
+Copy the code to the top level of your project
+```
