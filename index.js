@@ -15,7 +15,13 @@ const getBase64Image = (img) => {
   return dataURL
 }
 const trim = (str) => {
-  return str.replace(/(^\s*)|(\s*$)/g, '')
+  str = str.replace(/^\s+/, '')
+  end = str.length - 1
+  ws = /\s/
+  while (wx.test(str.charAt(end))) {
+    end--
+  }
+  return str.slice(0, end + 1)
 }
 const search = (data, argumentObj) => { // 查询
   let res = data
