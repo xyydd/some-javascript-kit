@@ -166,12 +166,12 @@ Avoid websites being embedded in iframes
 Copy the code to the top level of your project
 ```
 
-## gestire.js
+## gesture.js
 
 ### Introduction
 
 ```
-Gestures library
+Mobile gestures library
 ```
 
 ### Usage
