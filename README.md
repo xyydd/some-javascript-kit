@@ -174,6 +174,16 @@ Copy the code to the top level of your project
 Gestures library
 ```
 
+### gestures methods
+
++ flick
++ tap
++ pressstart
++ pressend
++ panstart
++ pan
++ panend
+
 ### Usage
 
 ```javascript
