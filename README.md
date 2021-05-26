@@ -165,3 +165,22 @@ Avoid websites being embedded in iframes
 ```
 Copy the code to the top level of your project
 ```
+
+## gestire.js
+
+### Introduction
+
+```
+Gestures library
+```
+
+### Usage
+
+```javascript
+import {enableGesture} from "./gesture.js";
+enableGesture(document.documentElement)
+
+document.documentElement.addEventListener('flick', (event) => {
+console.log('flick event trigger', event)
+})
+```
