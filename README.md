@@ -1,6 +1,131 @@
 # some-javascript-kit
 ![GitHub](https://img.shields.io/github/license/xyydd/some-javascript-kit?color=green) ![Travis (.org)](https://img.shields.io/travis/xyydd/some-javascript-kit)
 
+## JQuery
+
+### gallery.js
+
+### Introduction
+
+Gallery components based on `jQuery` and `Bootstrap`
+
+#### Installation
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" integrity="undefined" crossorigin="anonymous">
+<script
+  src="https://code.jquery.com/jquery-1.12.4.min.js"
+  integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+  crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+<script type="text/javascript" src="./some-javascript-kit/JQuery/gallery.js"></script>
+```
+#### Usage
+
+```javascript
+var galleryInstance = $.gallery({
+  selectedLimit: 2
+}) // init set options
+galleryInstance.setData(
+    [
+      'https://www.ydtx08.cn/damon-album/6.jpg',
+      'https://www.ydtx08.cn/damon-album/6.jpg',
+      'https://www.ydtx08.cn/damon-album/6.jpg',
+      'https://www.ydtx08.cn/damon-album/6.jpg'
+    ], // picture array
+    10 // total page count
+)
+galleryInstance.show()
+galleryInstance.customConfirm = function (selected) {
+  console.log('Selected Pictures: ', selected)
+}
+galleryInstance.on('page-change', function (currentPage) {
+      galleryInstance.setData([
+                                    'https://www.ydtx08.cn/damon-album/5.jpg',
+                                    'https://www.ydtx08.cn/damon-album/5.jpg',
+                                    'https://www.ydtx08.cn/damon-album/5.jpg',
+                                    'https://www.ydtx08.cn/damon-album/5.jpg'
+                                  ], 10)
+  })
+```
+
+#### Options
+
+##### isUpload
+
+Whether to enable the upload button
+
+```javascript
+var galleryInstance = $.gallery({
+  	selectedLimit: 2,
+    isUpload: true,
+    upload: function (e) {
+        var files = e.target.files || e.dataTransfer.files || e.dataTransfer.getData;
+        var data = new FormData()
+        for (var i = 0; i < files.length; i++) {
+            data.append("files[]", files[i]);
+        }
+        $.ajax({
+            type: 'POST',
+            url: '/upload/image',
+            data: data,
+            error: function (e) {
+                layer.msg("上传失败, 错误："+e.statusText);
+            },
+            success:function(data) {
+                if (data.code == 0 && data.status_code == 200) {
+                    galleryInstance.changePage(1)
+                    getPictures()
+                } else {
+                    layer.msg("上传失败");
+                }
+            }
+        });
+    }
+})
+function getPictures () {
+    $.ajax({
+        url: '',
+        type: 'get',
+        success: function (res) {
+            galleryInstance.setData(res.data, Math.ceil(res.total/20))
+        }
+    })
+}
+```
+
+##### totalPage
+
+All the page number
+
+##### currentPage
+
+The current page number
+
+##### selectedLimit
+
+Select the maximum number of images
+
+##### data
+
+Image array
+
+##### selectedPictures
+
+The selected image
+
+##### confirm
+
+The confirm function
+
+##### cancel
+
+The cancel function
+
+##### upload
+
+The upload function
+
 ## index.js:
 
 ### Installation
