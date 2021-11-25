@@ -319,4 +319,4 @@ document.documentElement.addEventListener('flick', (event) => {
 console.log('flick event trigger', event)
 })
 ```
- dev  dev
+ dev  dev   dev
