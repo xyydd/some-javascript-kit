@@ -319,3 +319,61 @@ document.documentElement.addEventListener('flick', (event) => {
 console.log('flick event trigger', event)
 })
 ```
+
+## ScrollAnimation
+
+### Usage
+
+```javascript
+const myDiv = document.querySelector('#box');
+const scrollAnimation = new ScrollAnimation(myDiv, {
+  animationData: [
+    { key: 'left', unit: 'px', defaultValue: 100, currentValue: 100, target: 800, duration: 2000, startTime: 0 },
+    { key: 'rotateX', showInStyle: false, unit: 'deg', defaultValue: 0, currentValue: 1, target: 270, duration: 1000, startTime: 2000 },
+    { key: 'rotateY', showInStyle: false, unit: 'deg', defaultValue: 0, currentValue: 1, target: 180, duration: 1000, startTime: 2000 },
+    {
+      key: 'transform',
+      dataIndex: [1, 2],
+      notPartInCalc: true,
+      defaultValueFormatter: (v1Option, v2Option) => {
+        return `rotateX(${v1Option.currentValue}${v1Option.unit}) rotateY(${v2Option.currentValue}${v2Option.unit})`
+      },
+      currentValueFormatter: (v1Option, v2Option) => {
+        return `rotateX(${v1Option.currentValue}${v1Option.unit}) rotateY(${v2Option.currentValue}${v2Option.unit})`
+      },
+    }
+  ]
+});
+```
+
+### Option
+
+#### animationData
+
+type: Array
+
+##### animationDataItem
+
+type: Object
+
+key: Dom节点样式名，比如top
+
+defaultValue: 当前样式的默认值
+
+currentValue: 当前样式滚动时的值
+
+target: 当前样式滚动结束后最后的目标值
+
+duration: 当前样式，从滚动开始到结束所需的理想时间
+
+startTime: 当前样式在整体滚动范围内的开始时间
+
+showInStyle: 当前样式是否显示在样式中
+
+notPartInCalc: 当前样式是否参与滚动计算
+
+dataIndex: 在当前样式需要别的样式来做组合时，别的样式的index值，比如`transform`
+
+defaultValueFormatter: `arg: 设置的dataIndex中的index对应的样式配置`,详细请看例子
+
+currentValueFormatter: 同上

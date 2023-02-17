@@ -16,8 +16,8 @@ const getBase64Image = (img) => {
 }
 const trim = (str) => {
   str = str.replace(/^\s+/, '')
-  end = str.length - 1
-  ws = /\s/
+  let end = str.length - 1
+  const ws = /\s/
   while (wx.test(str.charAt(end))) {
     end--
   }
@@ -42,7 +42,6 @@ const search = (data, argumentObj) => { // 查询
   }
   return res
 }
-
 const unitConversion = function (value, unit) {
   let str = ''
   switch (unit.toLowerCase()) {
