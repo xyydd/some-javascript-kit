@@ -377,3 +377,76 @@ dataIndex: 在当前样式需要别的样式来做组合时，别的样式的ind
 defaultValueFormatter: `arg: 设置的dataIndex中的index对应的样式配置`,详细请看例子
 
 currentValueFormatter: 同上
+
+## FitScreen
+
+使整个容器自适应屏幕
+
+### Usage
+
+`vue2`,把整个文件夹放到scr/components文件夹下面
+
+```javascript
+// main.js
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router'
+import store from './store'
+import FitScreen from './components/FitScreen';
+
+Vue.use(FitScreen);
+
+Vue.config.productionTip = false
+
+new Vue({
+  router,
+  store,
+  render: (h) => h(App),
+}).$mount('#app')
+
+```
+
+```Vue
+// App.vue
+<template>
+  <fit-screen :is-scale="true" :default-width="1920" :default-height="1080">
+      <div id="app">
+        <router-view />
+      </div>
+  </fit-screen>
+</template>
+
+<script>
+export default {
+}
+</script>
+
+<style lang="scss"></style>
+
+```
+
+### Options
+
+#### isScale
+
+type: Boolean
+
+default: true
+
+是否开始缩放
+
+#### defaultWidth
+
+type: Number
+
+default: 1920
+
+默认宽度
+
+#### defaultHeight
+
+type: Number
+
+default: 1080
+
+默认高度
