@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    body {
+      height: 100vh;
+      width: 100vw;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      flex-direction: column;
+    }
+    #canvas {
+      background-color: bisque;
+    }
+  </style>
+</head>
+<body>
+<button>添加一个气泡</button>
+<button onclick="init()">开始</button>
+<canvas id="canvas" height="500" width="500"></canvas>
+<script>
+  const canvas = document.querySelector("#canvas");
+  const ctx = canvas.getContext("2d");
+  const balls = [];
+  class Ball {
+    constructor(x, y, vx, vy, radius, color) {
+      this.x = x;
+      this.y = y;
+      this.vx = vx;
+      this.vy = vy;
+      this.radius = radius;
+      this.color = color;
+    }
+
+    //画圆
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = this.color;
+      ctx.fill();
+    }
+
+    //移动
+    move() {
+      this.draw();
+      this.x += this.vx;
+      this.y += this.vy;
+      //碰墙检测
+      if (this.x + this.radius > 500 || this.x - this.radius < 0) {
+        this.vx = -this.vx;
+      }
+      if (this.y + this.radius > 500 || this.y - this.radius < 0) {
+        this.vy = -this.vy;
+      }
+    }
+
+    //两球碰撞处理
+    touch(otherBall) {
+      const r = Math.sqrt(
+        (this.x - otherBall.x) ** 2 + (this.y - otherBall.y) ** 2
+      );
+      if (r <= this.radius + otherBall.radius) {
+        const dvx = this.vx - otherBall.vx;
+        const dvy = this.vy - otherBall.vy;
+
+        const d_x = this.x - otherBall.x;
+        const d_y = this.y - otherBall.y;
+        const xx_yy = d_x * d_x + d_y * d_y;
+        const DVx = (dvx * d_x * d_x + dvy * d_x * d_y) / xx_yy;
+        const DVy = (dvy * d_y * d_y + dvx * d_x * d_y) / xx_yy;
+        this.vx = this.vx - DVx;
+        this.vy = this.vy - DVy;
+        otherBall.vx = otherBall.vx + DVx;
+        otherBall.vy = otherBall.vy + DVy;
+      }
+    };
+  }
+  //创建小球的函数
+  function newBall() {
+    const vRandom = (Math.random() * 2 - 1) * 1.5;
+    // console.log(vRandom);
+    const xRandom = Math.random() * 450 + 20;
+    const yRandom = Math.random() * 450 + 20;
+    const rRandom = Math.random() * 20 + 10;
+    let ball = new Ball(
+      xRandom,
+      yRandom,
+      vRandom * 3 + 1,
+      vRandom * 3 + 1,
+      rRandom,
+      `rgb(${Math.random() * 255},${Math.random() * 255},${Math.random() * 255
+      })`
+    );
+    for (let i = 0; i < balls.length - 1; i++) {
+      let instance = Math.sqrt(
+        (balls[i].x - ball.x) ** 2 + (balls[i].y - ball.y) ** 2
+      );
+      //判断将要生成的新的小球与原有小球有没有重叠, 有就重新生成。
+      if (instance <= balls[i].radius + ball.radius) {
+        ball = newBall();
+        break;
+      }
+    }
+    return ball;
+  }
+  //开始函数
+  function start() {
+    for (let i = 0; i < balls.length; i++) {
+      balls[i].move();
+      balls[i].draw();
+      for (let j = 0; j < balls.length; j++) {
+        if (j !== i) {
+          balls[i].touch(balls[j]);
+        }
+      }
+    }
+  }
+  //循环的动画函数
+  function loop() {
+    ctx.clearRect(0, 0, 500, 500);
+    start();
+    window.requestAnimationFrame(loop);
+  }
+  //初始化
+  function init() {
+    for (let i = 0; i < 5; i++) {
+      balls.push(newBall());
+    }
+    loop()
+    const button = document.querySelector("button");
+    button.addEventListener("click", () => {
+      balls.push(newBall());
+    });
+  }
+  // init()
+</script>
+</body>
+</html>
