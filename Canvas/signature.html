@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>signature</title>
+  <style>
+    canvas {
+      /*width: 100%;*/
+      /*height: 100vh;*/
+    }
+  </style>
+</head>
+<body>
+<label for="color">颜色选择：</label><input type="color" id="color" />
+<label id="rangeLabel" for="range">线条大小：</label><input type="range" id="range" min="1" max="20" value="2" /><span id="rangeValue"></span>
+<button id="clear-btn">清空</button>
+
+<canvas></canvas>
+<script>
+  let lineWidth = 2, lineColor = '#000';
+  const canvas = document.querySelector('canvas');
+  const color = document.querySelector('input#color');
+  const clearBtn = document.querySelector('#clear-btn');
+  const range = document.querySelector('input#range');
+  const rangeLabel = document.querySelector('#rangeValue')
+
+  rangeLabel.innerText = lineWidth;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  const ctx = canvas.getContext('2d');
+  let  endX, endY;
+  const mobileStatus = (/Mobile|Android|iPhone/i.test(navigator.userAgent))
+  let isMove = false;
+  function clear() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+  function init(event) {
+    isMove = true;
+    const e = mobileStatus ? event.changedTouches[0] : event
+    endX = e.offsetX;
+    endY = e.offsetY;
+
+    ctx.beginPath()
+
+    ctx.lineWidth = lineWidth;
+    ctx.strokeStyle = lineColor;
+    ctx.lineCap = 'round';
+    ctx.lineJoin = 'round';
+
+    ctx.moveTo(endX, endY)
+  }
+
+  function draw(event) {
+    if (isMove) {
+      const { offsetX, offsetY } = mobileStatus ? event.changedTouches[0] : event
+      ctx.lineTo(offsetX, offsetY);
+      ctx.stroke();
+      endX = offsetX;
+      endY = offsetY;
+    }
+  }
+  function end() {
+    ctx.closePath()
+    isMove = false;
+  }
+  canvas.addEventListener(mobileStatus ? 'touchstart' : 'mousedown', init)
+  canvas.addEventListener(mobileStatus ? "touchmove" : "mousemove", draw)
+  canvas.addEventListener(mobileStatus ? "touchend" :"mouseup", end)
+  color.addEventListener('input', (e) => {
+    // console.log(e.target.value);
+    lineColor = e.target.value;
+  })
+  range.addEventListener('input', (e) => {
+    // console.log(e.target.value);
+    lineWidth = e.target.value;
+    rangeLabel.innerText = lineWidth;
+  })
+  clearBtn.addEventListener('click', clear);
+</script>
+</body>
+</html>
