@@ -5,7 +5,13 @@ try {
   const fontFilePath = "./fontFile";
   const fontFileDir = fs.readdirSync(fontFilePath);
   // 填写需要提取的字符，字符不要重复
-  const text="水产绿色健康养殖技术云课堂法律法规与政策文件重点品种质量安全管控技术水产快速检验检测水产绿色健康养殖小知识";
+  const text1="水产绿色健康养殖技术云课堂法律法规与政策文件重点品种质量安全管控技术水产快速检验检测水产绿色健康养殖小知识专题培训";
+  const arr = text1.split('');
+  const obj = {};
+  arr.forEach((item) => {
+    obj[item] = true;
+  });
+  const text = Object.keys(obj).join("");
   // 只拿取ttf文件
   const fonts = fontFileDir.filter((fd) => {
     let fileType = fd.split(".");
