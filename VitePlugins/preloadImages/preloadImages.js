@@ -3,7 +3,7 @@ import fg from 'fast-glob';
 const ext = '*.{png,jpg,jpeg}';
 
 const defaultOptions = {
-  dir: 'src/assets/images',
+  dir: undefined,
   rel: 'preload',
 };
 export default function preloadImages(options = defaultOptions) {
@@ -25,7 +25,7 @@ export default function preloadImages(options = defaultOptions) {
             },
           };
         });
-      } else {
+      } else if (ctx.server && dir) {
         // console.log(ctx.server.config);
         let images = [];
         if (Array.isArray(dir)) {
@@ -59,6 +59,7 @@ export default function preloadImages(options = defaultOptions) {
           };
         });
       }
+      return html;
     },
   };
 }
