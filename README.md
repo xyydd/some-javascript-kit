@@ -3,7 +3,7 @@
 
 ## JQuery
 
-### gallery.js
+### gallery.js1
 
 ### Introduction
 
